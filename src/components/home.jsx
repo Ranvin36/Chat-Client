@@ -42,6 +42,8 @@ function Home(){
     const dispatch = useDispatch()
     const Socket = io(`${baseUrl}`)
 
+    console.log(baseUrl)
+
     async function GetProfile(){
         try{
             if(!Token){
