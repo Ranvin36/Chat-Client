@@ -144,6 +144,8 @@ function Home(){
 
         }
     }
+
+    console.log(chatData)
     
     async function AddToFavourites(operation) {
             const ControlIdentifier = operation == "remove"
