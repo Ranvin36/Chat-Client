@@ -40,7 +40,7 @@ function Home(){
 
     const navigate=useNavigate()
     const dispatch = useDispatch()
-    const Socket = io("https://fleexy-chat-api.onrender.com/")
+    const Socket = io("https://fleexy-chat-api.onrender.com")
 
     console.log(baseUrl)
 
