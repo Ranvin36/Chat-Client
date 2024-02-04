@@ -14,6 +14,8 @@ import io from "socket.io-client"
 import { useSelector } from "react-redux";
 import { CgOptions } from "react-icons/cg";
 import Navbar from "../subComponents/navbar";
+import baseUrl from "../subComponents/baseUrl";
+
 
 
 
@@ -33,7 +35,7 @@ function Blocked(){
     const navigate=useNavigate()
     const Socket = io("https://fleexy-chat-api.onrender.com")
     async function GetProfile(){
-        await axios.get("http://localhost:3001/api/v1/chats/all",{
+        await axios.get(`${baseUrl}/api/v1/chats/all`,{
             headers:{
                 Authorization:`Bearer ${Token} `
             }
@@ -43,7 +45,7 @@ function Blocked(){
     }
 
     async function FetchProfileExecution(item){
-        const response =await axios.get(`http://localhost:3001/api/v1/chats/get-chats/${item}`,{
+        const response =await axios.get(`${baseUrl}/api/v1/chats/get-chats/${item}`,{
             headers:{
                 Authorization:`Bearer ${Token} `
             }
@@ -84,7 +86,7 @@ function Blocked(){
             }
             data.append('text', message ? message : 'Image');
 
-            await axios.post(`http://localhost:3001/api/v1/chats/message-sent/${activeChat._id}`,data,{
+            await axios.post(`${baseUrl}/api/v1/chats/message-sent/${activeChat._id}`,data,{
                 headers:{
                     Authorization:`Bearer ${Token}`,
                     'Content-Type': 'multipart/form-data',
@@ -112,7 +114,7 @@ function Blocked(){
     async function BlockUser(operation) {
         const ControlIdentifier = operation == "remove"
         try {
-          const response = await axios.post(`http://localhost:3001/api/v1/chats/${ControlIdentifier ? "Unblock":"block"}-user/${activeChat._id}`, null, {
+          const response = await axios.post(`${baseUrl}/api/v1/chats/${ControlIdentifier ? "Unblock":"block"}-user/${activeChat._id}`, null, {
             headers: {
               Authorization: `Bearer ${Token}`
             }
