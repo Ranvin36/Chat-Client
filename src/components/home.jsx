@@ -61,6 +61,7 @@ function Home(){
         }
         catch(error){
             dispatch(setToken(''))
+
         }
     }
 
@@ -95,6 +96,7 @@ function Home(){
             //     }
             // })
             // setChatData(response.data.Messages)
+            console.log("Fetch Chat")
             Socket.emit("fetchMessages", { userId: UserId, opponentId: data._id });
 
         }
