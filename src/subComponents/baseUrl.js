@@ -1,3 +1,3 @@
-const baseUrl = "https://fleexy-chat-api.onrender.com"
+const baseUrl = "https://localhost:3001"
 
 export default baseUrl
