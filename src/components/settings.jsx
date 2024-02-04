@@ -14,6 +14,8 @@ import io from "socket.io-client"
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../subComponents/navbar";
 import { setToken } from "../redux/actions";
+import baseUrl from "../subComponents/baseUrl";
+
 
 
 function Settings(){
