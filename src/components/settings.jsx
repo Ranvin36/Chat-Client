@@ -29,7 +29,7 @@ function Settings(){
     const Socket = io("http://localhost:3001")    
     const dispatch = useDispatch()
     async function GetProfile(){
-        await axios.get("http://localhost:3001/api/v1/chats/all",{
+        await axios.get(`${baseUrl}/api/v1/chats/all`,{
             headers:{
                 Authorization:`Bearer ${Token} `
             }

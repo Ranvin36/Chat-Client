@@ -10,6 +10,7 @@ import { UserContext } from '../Context-Api/api-data';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToken } from '../redux/actions';
 import { useLocation } from 'react-router-dom';
+import baseUrl from "../subComponents/baseUrl";
 
 function Login(){
     const[username,setUsername]= useState('')
@@ -30,7 +31,7 @@ function Login(){
                 password
             }
 
-                axios.post('http://localhost:3001/api/v1/user/login',data)
+                axios.post(`${baseUrl}/api/v1/user/login`,data)
 
                 .then((response)=>{
                     if (response &&response.data) { 
@@ -53,7 +54,7 @@ function Login(){
         }
 
         async function GoogleLogin(){
-            await axios.get('http://localhost:3001/auth/google/login/success')
+            await axios.get(`${baseUrl}/auth/google/login/success`)
             .then((data) =>{
                 console.log(data)
             })

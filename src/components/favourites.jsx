@@ -13,6 +13,7 @@ import { IoIosAttach } from "react-icons/io";
 import io from "socket.io-client"
 import { useSelector } from "react-redux";
 import Navbar from "../subComponents/navbar";
+import baseUrl from "../subComponents/baseUrl";
 
 
 function Favourites(){
@@ -29,7 +30,7 @@ function Favourites(){
     const navigate=useNavigate()
     const Socket = io("http://localhost:3001")    
     async function GetProfile(){
-        await axios.get("http://localhost:3001/api/v1/chats/all",{
+        await axios.get(`${baseUrl}/api/v1/chats/all`,{
             headers:{
                 Authorization:`Bearer ${Token} `
             }
@@ -39,7 +40,7 @@ function Favourites(){
     }
 
     async function FetchProfileExecution(item){
-        const response =await axios.get(`http://localhost:3001/api/v1/chats/get-chats/${item}`,{
+        const response =await axios.get(`${baseUrl}/api/v1/chats/get-chats/${item}`,{
             headers:{
                 Authorization:`Bearer ${Token} `
             }
@@ -80,7 +81,7 @@ function Favourites(){
             }
             data.append('text', message ? message : 'Image');
 
-            await axios.post(`http://localhost:3001/api/v1/chats/message-sent/${activeChat._id}`,data,{
+            await axios.post(`${baseUrl}/api/v1/chats/message-sent/${activeChat._id}`,data,{
                 headers:{
                     Authorization:`Bearer ${Token}`,
                     'Content-Type': 'multipart/form-data',

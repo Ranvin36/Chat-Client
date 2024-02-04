@@ -6,6 +6,8 @@ import Lottie from "lottie-react"
 import loginimg from "../lottie/loginimg.json"
 import axios from "axios"
 import InputContainer from '../subComponents/inputContainer';
+import baseUrl from "../subComponents/baseUrl";
+
 
 function Signup(){
     const navigate = useNavigate()
@@ -21,7 +23,7 @@ function Signup(){
                 email,
                 password
             }
-                await axios.post('http://localhost:3001/api/v1/user/register',data)
+                await axios.post(`${baseUrl}/api/v1/user/register`,data)
                 .then(()=>{
                     setError('') 
                     navigate('/login')
@@ -36,7 +38,7 @@ function Signup(){
         }
     
         async function GoogleLogin(){
-            axios.get('http://localhost:3001/auth/google/login/success')
+            axios.get(`${baseUrl}/auth/google/login/success`)
             .then((data) =>{
                 console.log(data)
             })

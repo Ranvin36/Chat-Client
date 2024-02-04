@@ -3,6 +3,8 @@ import { useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import GlowBtn from "../subComponents/GlowBtn"
+import baseUrl from "../subComponents/baseUrl";
+
 
 function UpdateProfile(){
     const navigate = useNavigate()
@@ -23,7 +25,7 @@ function UpdateProfile(){
             if(attachment){
                 formData.append('file', attachment);
                 formData.append('text',"ABCD")
-                await axios.post(`http://localhost:3001/api/v1/chats/profile-upload`, formData, {
+                await axios.post(`${baseUrl}/api/v1/chats/profile-upload`, formData, {
                 headers: {
                     Authorization: `Bearer ${Token}`,
                     // 'Content-Type': 'multipart/form-data',
