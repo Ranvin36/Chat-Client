@@ -28,7 +28,7 @@ function Settings(){
     const UserId= userData._id
     const Token = useSelector((state) => state.auth.token);
     const navigate=useNavigate()
-    const Socket = io("http://localhost:3001")    
+    const Socket = io("https://fleexy-chat-api.onrender.com")
     const dispatch = useDispatch()
     async function GetProfile(){
         await axios.get(`${baseUrl}/api/v1/chats/all`,{

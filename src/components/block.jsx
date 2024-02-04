@@ -31,7 +31,7 @@ function Blocked(){
     const[blockedUser,setBlockedUSer]=useState(false)
     const[optionsClicked,setOptionsClicked]=useState(false)
     const navigate=useNavigate()
-    const Socket = io("http://localhost:3001")    
+    const Socket = io("https://fleexy-chat-api.onrender.com")
     async function GetProfile(){
         await axios.get("http://localhost:3001/api/v1/chats/all",{
             headers:{
