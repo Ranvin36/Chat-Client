@@ -40,9 +40,7 @@ function Home(){
 
     const navigate=useNavigate()
     const dispatch = useDispatch()
-    const Socket = io("https://fleexy-chat-api.onrender.com")
-
-    console.log(baseUrl)
+    const Socket = io(`${baseUrl}`)
 
     async function GetProfile(){
         try{
@@ -61,7 +59,6 @@ function Home(){
         }
         catch(error){
             dispatch(setToken(''))
-
         }
     }
 
@@ -96,7 +93,6 @@ function Home(){
             //     }
             // })
             // setChatData(response.data.Messages)
-            console.log("Fetch Chat")
             Socket.emit("fetchMessages", { userId: UserId, opponentId: data._id });
 
         }
@@ -146,8 +142,6 @@ function Home(){
 
         }
     }
-
-    console.log(chatData)
     
     async function AddToFavourites(operation) {
             const ControlIdentifier = operation == "remove"
@@ -259,6 +253,7 @@ function Home(){
 
     useEffect(() => {
         Socket.on("fetchMessages", (data) => {
+            console.log("JEJEJE")
             setChatData((prevChatData) => [...prevChatData, data]);
         });
     
